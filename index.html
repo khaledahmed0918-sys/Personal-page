@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed's Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --clip-x: 50%;
+            --clip-y: 50%;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Theme Transition */
+        #theme-transition-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+            pointer-events: none;
+            clip-path: circle(0% at var(--clip-x) var(--clip-y));
+            transition: clip-path 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #theme-transition-overlay.active {
+            clip-path: circle(150% at var(--clip-x) var(--clip-y));
+        }
+
+        /* Animations */
+        @keyframes fade-in-down {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .motion-safe\:animate-fade-in-down { animation: fade-in-down 0.5s ease-out forwards; }
+        .motion-safe\:animate-fade-in-up { animation: fade-in-up 0.5s ease-out forwards; }
+        
+        /* Typewriter Cursor */
+        @keyframes blink-cursor {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .motion-safe\:animate-blink-cursor {
+            animation: blink-cursor 0.75s step-end infinite;
+        }
+
+        /* Starfield Background */
+        @keyframes star-twinkle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        .motion-safe\:animate-star-twinkle { animation: star-twinkle 4s infinite ease-in-out; }
+        @keyframes satellite-orbit {
+            0% { transform: translate(100vw, -10vh) rotate(225deg); }
+            100% { transform: translate(-20vw, 120vh) rotate(225deg); }
+        }
+        .motion-safe\:animate-satellite-orbit { animation: satellite-orbit 60s linear infinite; }
+
+        /* Light Theme Background */
+        @keyframes sun-pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 60px 20px rgba(253, 224, 71, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 0 80px 30px rgba(253, 224, 71, 0.6); }
+        }
+        .motion-safe\:animate-sun-pulse { animation: sun-pulse 8s infinite ease-in-out; }
+        @keyframes cloud-drift-1 {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(200vw); }
+        }
+        .motion-safe\:animate-cloud-drift-1 { animation: cloud-drift-1 120s linear infinite; }
+        @keyframes cloud-drift-2 {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-200vw); }
+        }
+        .motion-safe\:animate-cloud-drift-2 { animation: cloud-drift-2 90s linear infinite; }
+        
+        /* Easter Eggs */
+        @keyframes sun-flash {
+            0%, 100% { box-shadow: 0 0 60px 20px rgba(253, 224, 71, 0.4); }
+            50% { box-shadow: 0 0 120px 50px rgba(253, 224, 71, 0.8); }
+        }
+        .motion-safe\:animate-sun-flash { animation: sun-flash 0.5s ease-in-out; }
+        @keyframes moon-wink {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.1); }
+        }
+        .motion-safe\:animate-moon-wink { animation: moon-wink 0.5s ease-in-out; }
+
+        /* Toast */
+        @keyframes toast-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes toast-out {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(20px); }
+        }
+        .motion-safe\:animate-toast-in { animation: toast-in 0.5s forwards; }
+        .motion-safe\:animate-toast-out { animation: toast-out 0.5s forwards; }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://aistudiocdn.com/react@^19.2.0",
+        "react/": "https://aistudiocdn.com/react@^19.2.0/",
+        "@heroicons/react/": "https://aistudiocdn.com/@heroicons/react@^2.2.0/",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+      }
+    }
+    </script>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
