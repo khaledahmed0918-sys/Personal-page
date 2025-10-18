@@ -37,7 +37,7 @@ export const WEBHOOK_URL = "https://discord.com/api/webhooks/1425237010892853380
 
 // This is the default avatar used in the Discord embed for ratings.
 // You can change this URL to a picture of yourself or your logo.
-export const DEFAULT_AVATAR_URL = "https://cdn.discordapp.com/attachments/1425236976298102814/1428807907566292992/91106cac524b2ae1dfe17ea8ff2b46d6.png?ex=68f3d88f&is=68f2870f&hm=506fb36e9b3580225bf121d1abce8298d2a6684c502cd11c2d1ae550376f8f4b&";
+export const DEFAULT_AVATAR_URL = "./mypic.png";
 
 
 // 3. THEME COLORS
@@ -55,14 +55,14 @@ export const SERVERS: Server[] = [
     name: "ASWAYZ Community",
     description: "A growing community hub.",
     role: "Manager, Moderator",
-    avatar: "https://cdn.discordapp.com/attachments/1409886941410885732/1420031192870424576/image.png?ex=68f38e9b&is=68f23d1b&hm=9b912afd997c2f9e7e8cc89b143d36f3ba74732bd671e64935b25a9beaa2e428&",
+    avatar: "./aswayz.png",
     inviteLink: "https://discord.gg/DDZXYw3sYq",
   },
   {
     name: "MT Community",
     description: "Combines Events & Chatting for MTRP / FiveM fans.",
     role: "Manager",
-    avatar: "https://cdn.discordapp.com/attachments/1425236976298102814/1428805731087286393/HEIF_Image.jpg?ex=68f3d688&is=68f28508&hm=8c425fb30811531c4263a56d7dbe344f5dfb129cd8780c5c99e0d50de2c3842&",
+    avatar: "./mt-community.jpeg",
     inviteLink: "https://discord.gg/KJUJKTdS5D",
   },
 ];
@@ -126,7 +126,7 @@ export const PROJECTS: Project[] = [
     repoUrl: "#",
   },
   {
-    title: "Community Hub Bot",
+    title: "Community Bot",
     description: "A multi-purpose Discord bot for the ASWAYZ Community, featuring moderation tools, an economy system, and fun commands.",
     imageUrl: "https://cdn.discordapp.com/attachments/1425236976298102814/1428901619139088474/IMG_7554.png?ex=68f42fd5&is=68f2de55&hm=4d547ae6d623b8e82bde1339281ad40886865ef9083e09ed7aab4984deae0f72&$0",
     tags: ["Discord.js", "Node.js", "MongoDB"],

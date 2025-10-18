@@ -27,7 +27,7 @@ const FavPlayer: React.FC = () => {
               {/* Player Image */}
               <div className="w-full md:w-1/3 flex-shrink-0 flex justify-center items-center">
                 <img
-                  src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fseeklogo.com%2Fvector-logo%2F116414%2Freal-madrid&psig=AOvVaw0NJ7tnACrfq2TXhgLsaZLO&ust=1760832947754000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCMC4z4-8rJADFQAAAAAdAAAAABAW$0"
+                  src="/real-madrid.jpeg"
                   alt="Real Madrid"
                   className="h-96 md:h-[450px] object-contain drop-shadow-2xl"
                 />
