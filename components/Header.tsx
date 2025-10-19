@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanyard } from '../hooks/useLanyard';
 import { useTypewriter } from '../hooks/useTypewriter';
 import { DISCORD_USER_ID, FEATURE_FLAGS } from '../constants';
@@ -10,16 +10,24 @@ interface HeaderProps {
   tagline: string;
 }
 
-const SpotifyPill: React.FC<{ track_id: string; song: string; artist: string; album_art_url: string; }> = ({ track_id, song, artist, album_art_url }) => (
-    <a href={`httpshttps://open.spotify.com/track/${track_id}`} target="_blank" rel="noopener noreferrer"
-        className="mt-4 inline-flex items-center gap-3 px-3 py-2 bg-black/20 backdrop-blur-md rounded-lg hover:bg-black/30 transition-colors duration-300">
-        <img src={album_art_url} alt="Spotify album art" className="w-10 h-10 rounded-md" />
-        <div>
-            <p className="font-semibold text-sm text-white truncate">{song}</p>
-            <p className="text-xs text-gray-300 truncate">by {artist}</p>
-        </div>
-    </a>
-);
+const SpotifyPill: React.FC<{ track_id: string; song: string; artist: string; album_art_url: string; }> = ({ track_id, song, artist, album_art_url }) => {
+    const [isLoaded, setIsLoaded] = useState(false);
+    return (
+        <a href={`https://open.spotify.com/track/${track_id}`} target="_blank" rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center gap-3 px-3 py-2 bg-black/20 backdrop-blur-md rounded-lg hover:bg-black/30 transition-colors duration-300">
+            <img 
+              src={album_art_url} 
+              alt="Spotify album art"
+              onLoad={() => setIsLoaded(true)}
+              className={`w-10 h-10 rounded-md ${isLoaded ? 'image-loaded' : 'image-loading'}`} 
+            />
+            <div>
+                <p className="font-semibold text-sm text-white truncate">{song}</p>
+                <p className="text-xs text-gray-300 truncate">by {artist}</p>
+            </div>
+        </a>
+    )
+};
 
 const VSCodePill: React.FC<{ details?: string; state?: string; }> = ({ details, state }) => (
     <div className="mt-4 inline-flex items-center gap-3 px-3 py-2 bg-black/20 backdrop-blur-md rounded-lg">
@@ -40,7 +48,7 @@ const Header: React.FC<HeaderProps> = ({ name, tagline }) => {
 
     return (
         <header className="text-center pt-24 pb-16">
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600 opacity-0 motion-safe:animate-fade-in-down">
+            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter dynamic-gradient-text opacity-0 motion-safe:animate-fade-in-down">
                 {name}
             </h1>
             <p className="mt-8 text-lg md:text-xl text-gray-600 dark:text-gray-300 tracking-wide min-h-[28px] md:min-h-[30px]">

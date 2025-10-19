@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Section from './ui/Section';
 import Card from './ui/Card';
 import type { Server } from '../types';
@@ -9,12 +9,13 @@ interface ServersProps {
 }
 
 const ServerCard: React.FC<{ server: Server; isVisible: boolean; delay: number }> = ({ server, isVisible, delay }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
   return (
     <a 
       href={server.inviteLink}
       target="_blank"
       rel="noopener noreferrer"
-      className={`block h-full transform motion-safe:transition-all motion-safe:duration-500 motion-safe:ease-out hover:-translate-y-2 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      className={`block h-full transform motion-safe:transition-all motion-safe:duration-500 motion-safe:ease-out hover:-translate-y-2 ${isVisible ? 'opacity-100 translate-y-0 scale-100 rotate-0' : 'opacity-0 translate-y-8 scale-95 -rotate-2'}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       <Card className="p-6 h-full">
@@ -23,7 +24,8 @@ const ServerCard: React.FC<{ server: Server; isVisible: boolean; delay: number }
             <img 
               src={server.avatar} 
               alt={`${server.name} server logo`} 
-              className="w-12 h-12 rounded-lg object-cover bg-gray-200 dark:bg-gray-700" 
+              onLoad={() => setIsLoaded(true)}
+              className={`w-12 h-12 rounded-lg object-cover ${isLoaded ? 'image-loaded' : 'image-loading'}`} 
             />
           </div>
           <div>
@@ -46,7 +48,7 @@ const Servers: React.FC<ServersProps> = ({ servers }) => {
 
   return (
     <Section ref={ref}>
-      <h2 className="text-3xl font-bold tracking-tight text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-500">Servers I Manage</h2>
+      <h2 className="text-3xl font-bold tracking-tight text-center mb-8 dynamic-gradient-text">Servers I Manage</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {servers.map((server, index) => (
           <ServerCard key={server.name} server={server} isVisible={isVisible} delay={index * 150} />

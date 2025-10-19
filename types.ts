@@ -11,7 +11,7 @@ export interface Server {
 }
 
 export interface Skill {
-  name: string;
+  name:string;
   level: number; // 0-100
   // FIX: Changed icon type to React.ComponentType to correctly type HeroIcons components.
   icon: React.ComponentType<React.ComponentProps<'svg'>>;

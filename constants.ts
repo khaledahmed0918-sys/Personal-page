@@ -37,7 +37,7 @@ export const WEBHOOK_URL = "https://discord.com/api/webhooks/1425237010892853380
 
 // This is the default avatar used in the Discord embed for ratings.
 // You can change this URL to a picture of yourself or your logo.
-export const DEFAULT_AVATAR_URL = "./mypic.png";
+export const DEFAULT_AVATAR_URL = "https://i.postimg.cc/pTr5xpC9/vas-ue3cr5-Ed-Hh.png";
 
 
 // 3. THEME COLORS
@@ -55,14 +55,14 @@ export const SERVERS: Server[] = [
     name: "ASWAYZ Community",
     description: "A growing community hub.",
     role: "Manager, Moderator",
-    avatar: "./aswayz.png",
+    avatar: "https://i.postimg.cc/fyXcnVWh/vas-qargmqb-OPy.png",
     inviteLink: "https://discord.gg/DDZXYw3sYq",
   },
   {
     name: "MT Community",
     description: "Combines Events & Chatting for MTRP / FiveM fans.",
     role: "Manager",
-    avatar: "./mt-community.jpeg",
+    avatar: "https://i.postimg.cc/fW0j0rc8/vas-6ya-Z8gs-PDk.jpg",
     inviteLink: "https://discord.gg/KJUJKTdS5D",
   },
 ];
@@ -143,5 +143,6 @@ export const FEATURE_FLAGS = {
   easterEggs: true,
   modeTransition: true,
   cursorTrail: true,
+  animatedBear: true,
   soundFX: false // Disabled for now
 };

@@ -21,7 +21,7 @@ const CopyDiscordButton: React.FC = () => {
         <div className="relative inline-flex">
             <button
                 onClick={handleCopy}
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 rounded-lg hover:bg-cyan-500/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-cyan-500 transform hover:scale-105"
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium border border-[var(--color-primary)]/30 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded-lg hover:bg-[var(--color-primary)]/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 dynamic-focus-ring transform hover:scale-105"
             >
                 {isCopied ? (
                     <CheckIcon className="w-5 h-5 text-green-400" />

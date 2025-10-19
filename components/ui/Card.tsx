@@ -10,7 +10,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ children, className, style }) => {
   return (
     <div
-      className={`bg-white/20 dark:bg-black/30 backdrop-blur-md border border-white/10 dark:border-gray-700/50 rounded-2xl shadow-lg transition-shadow duration-300 hover:shadow-cyan-500/20 dark:hover:shadow-cyan-400/20 ${className}`}
+      className={`bg-white/20 dark:bg-black/30 backdrop-blur-md border border-white/10 dark:border-gray-700/50 rounded-2xl shadow-lg transition-shadow duration-300 dynamic-shadow-hover ${className}`}
       style={style}
     >
       {children}

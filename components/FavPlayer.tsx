@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import Section from './ui/Section';
 import Card from './ui/Card';
 import { FAV_PLAYER_INFO } from '../constants';
@@ -7,11 +6,14 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const FavPlayer: React.FC = () => {
   const [ref, isVisible] = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
+  const [isPlayerImgLoaded, setIsPlayerImgLoaded] = useState(false);
+  const [isSigImgLoaded, setIsSigImgLoaded] = useState(false);
+
 
   return (
     <Section ref={ref} className="px-4 sm:px-6 lg:px-8">
       <div className="max-w-[1465px] mx-auto">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-500">My Favorite Player</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-8 dynamic-gradient-text">My Favorite Player</h2>
         <Card
           className="p-8 md:p-12 overflow-hidden relative w-full"
           style={{
@@ -27,9 +29,10 @@ const FavPlayer: React.FC = () => {
               {/* Player Image */}
               <div className="w-full md:w-1/3 flex-shrink-0 flex justify-center items-center">
                 <img
-                  src="/real-madrid.jpeg"
+                  src="https://i.postimg.cc/HxvZs8Cr/IMG-7553.png"
                   alt="Real Madrid"
-                  className="h-96 md:h-[450px] object-contain drop-shadow-2xl"
+                  onLoad={() => setIsPlayerImgLoaded(true)}
+                  className={`h-96 md:h-[450px] object-contain drop-shadow-2xl ${isPlayerImgLoaded ? 'image-loaded' : 'image-loading'}`}
                 />
               </div>
               
@@ -68,7 +71,8 @@ const FavPlayer: React.FC = () => {
             <img 
               src="https://cdn.discordapp.com/attachments/1425236976298102814/1428890546822320250/IMG_7549.jpg?ex=68f42585&is=68f2d405&hm=365525a98842e3d96964f2f852300a091b45fb26c4457cb6adfc45e2bf3f555d&"
               alt="Cristiano Ronaldo signature and celebration"
-              className={`block mx-auto mt-8 w-full max-w-[600px] h-[240px] object-cover rounded-2xl shadow-lg motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-out ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+              onLoad={() => setIsSigImgLoaded(true)}
+              className={`block mx-auto mt-8 w-full max-w-[600px] h-[240px] object-cover rounded-2xl shadow-lg motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-out ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'} ${isSigImgLoaded ? 'image-loaded' : 'image-loading'}`}
               style={{ transitionDelay: '200ms' }}
             />
 

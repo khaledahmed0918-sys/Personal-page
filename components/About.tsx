@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Section from './ui/Section';
 import Card from './ui/Card';
 import { useLanyard } from '../hooks/useLanyard';
@@ -21,6 +21,7 @@ const statusMessages: Record<string, string> = {
 
 const About: React.FC = () => {
   const lanyardData = useLanyard(DISCORD_USER_ID);
+  const [isAvatarLoaded, setIsAvatarLoaded] = useState(false);
 
   const avatarUrl = lanyardData?.discord_user
     ? `https://cdn.discordapp.com/avatars/${lanyardData.discord_user.id}/${lanyardData.discord_user.avatar}.png?size=128`
@@ -37,8 +38,9 @@ const About: React.FC = () => {
           <div className="relative">
             <img 
               src={avatarUrl} 
-              alt="Mohammed's Avatar" 
-              className="w-40 h-40 rounded-full object-cover ring-4 ring-cyan-500/50" 
+              alt="Mohammed's Avatar"
+              onLoad={() => setIsAvatarLoaded(true)}
+              className={`w-40 h-40 rounded-full object-cover ring-4 ring-opacity-50 dynamic-ring ${isAvatarLoaded ? 'image-loaded' : 'image-loading'}`} 
             />
             {lanyardData && (
               <div title={statusInfo.text} className={`absolute bottom-2 right-2 flex items-center justify-center w-10 h-10 rounded-full border-4 border-gray-900/80 ${statusInfo.color}`}>
@@ -51,7 +53,7 @@ const About: React.FC = () => {
         </Card>
         
         <Card className="md:col-span-2 p-8 motion-safe:animate-fade-in-up motion-safe:delay-200">
-          <h2 className="text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-500 mb-4">About Me</h2>
+          <h2 className="text-3xl font-bold tracking-tight dynamic-gradient-text mb-4">About Me</h2>
           <p className="text-base leading-relaxed text-gray-700 dark:text-gray-300">
             {PERSONAL_INFO.bio}
           </p>
